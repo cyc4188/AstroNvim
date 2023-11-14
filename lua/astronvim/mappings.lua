@@ -17,13 +17,14 @@ local sections = {
   g = { desc = get_icon("Git", 1, true) .. "Git" },
   S = { desc = get_icon("Session", 1, true) .. "Session" },
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+  w = { desc = get_icon("Window", 1, true) .. "Window" },
 }
 
 -- Normal --
 -- Standard Operations
 maps.n["j"] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = "Move cursor down" }
 maps.n["k"] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = "Move cursor up" }
-maps.n["<leader>w"] = { "<cmd>w<cr>", desc = "Save" }
+maps.n["<leader>s"] = { "<cmd>w<cr>", desc = "Save" }
 maps.n["<leader>q"] = { "<cmd>confirm q<cr>", desc = "Quit" }
 maps.n["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" }
 maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
@@ -209,19 +210,21 @@ end
 
 -- Smart Splits
 if is_available "smart-splits.nvim" then
-  maps.n["<C-h>"] = { function() require("smart-splits").move_cursor_left() end, desc = "Move to left split" }
-  maps.n["<C-j>"] = { function() require("smart-splits").move_cursor_down() end, desc = "Move to below split" }
-  maps.n["<C-k>"] = { function() require("smart-splits").move_cursor_up() end, desc = "Move to above split" }
-  maps.n["<C-l>"] = { function() require("smart-splits").move_cursor_right() end, desc = "Move to right split" }
+  maps.n["<leader>w"] = sections.w
+  maps.n["<leader>wh"] = { function() require("smart-splits").move_cursor_left() end, desc = "Move to left split" }
+  maps.n["<leader>wj"] = { function() require("smart-splits").move_cursor_down() end, desc = "Move to below split" }
+  maps.n["<leader>wk"] = { function() require("smart-splits").move_cursor_up() end, desc = "Move to above split" }
+  maps.n["<leader>wl"] = { function() require("smart-splits").move_cursor_right() end, desc = "Move to right split" }
   maps.n["<C-Up>"] = { function() require("smart-splits").resize_up() end, desc = "Resize split up" }
   maps.n["<C-Down>"] = { function() require("smart-splits").resize_down() end, desc = "Resize split down" }
   maps.n["<C-Left>"] = { function() require("smart-splits").resize_left() end, desc = "Resize split left" }
   maps.n["<C-Right>"] = { function() require("smart-splits").resize_right() end, desc = "Resize split right" }
 else
-  maps.n["<C-h>"] = { "<C-w>h", desc = "Move to left split" }
-  maps.n["<C-j>"] = { "<C-w>j", desc = "Move to below split" }
-  maps.n["<C-k>"] = { "<C-w>k", desc = "Move to above split" }
-  maps.n["<C-l>"] = { "<C-w>l", desc = "Move to right split" }
+  maps.n["<leader>w"] = sections.w
+  maps.n["<leader>wh"] = { "<C-w>h", desc = "Move to left split" }
+  maps.n["<leader>wj"] = { "<C-w>j", desc = "Move to below split" }
+  maps.n["<leader>wk"] = { "<C-w>k", desc = "Move to above split" }
+  maps.n["<leader>wl"] = { "<C-w>l", desc = "Move to right split" }
   maps.n["<C-Up>"] = { "<cmd>resize -2<CR>", desc = "Resize split up" }
   maps.n["<C-Down>"] = { "<cmd>resize +2<CR>", desc = "Resize split down" }
   maps.n["<C-Left>"] = { "<cmd>vertical resize -2<CR>", desc = "Resize split left" }
