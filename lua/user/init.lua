@@ -1,12 +1,6 @@
 return {
   colorscheme = "onedark",
 
-  mappings = {
-    n = {
-      ["<leader>a"] = { "<cmd>AerialToggle<CR>" },
-    } 
-  },
-
   plugins = {
     {
       "navarasu/onedark.nvim",
@@ -15,7 +9,6 @@ return {
         require("onedark").load()
       end,
     },
-    
     {
       "p00f/clangd_extensions.nvim", -- install lsp plugin
       init = function()
@@ -41,7 +34,6 @@ return {
       },
     },
   },
-  
   options = {
     opt = {
       wrap = true,  -- show long line
