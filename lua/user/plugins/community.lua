@@ -1,4 +1,5 @@
 return {
+  "AstroNvim/astrocommunity",
   {
     "navarasu/onedark.nvim",
     name = "onedark",
@@ -46,4 +47,5 @@ return {
       },
     },
   },
+  { import = "astrocommunity.media.vim-wakatime" },
 }
