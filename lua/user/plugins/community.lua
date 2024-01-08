@@ -48,4 +48,5 @@ return {
     },
   },
   { import = "astrocommunity.media.vim-wakatime" },
+  { import = "astrocommunity.motion.flash-nvim"},
 }
